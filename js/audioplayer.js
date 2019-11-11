@@ -1,3 +1,8 @@
+/* 
+    AUTHOR: MORTEN BEUCHERT
+    DATE: 12TH NOVEMBER 2019
+*/
+
 class AudioPlayer {
     constructor(containerId, url, title, volume = .3) {
         this.audio = new Audio(url);
