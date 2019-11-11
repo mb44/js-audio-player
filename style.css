@@ -1,0 +1,143 @@
+body {
+  background-color: #000;
+  padding: 20px;
+}
+
+.player {
+  background-color: black;
+  color: white;
+}
+
+/*
+#seeker {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px;
+  height: 25px;
+  outline: none;
+  background: #222;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  cursor: pointer;
+}
+*/
+
+/* SEEKER */
+#seeker {
+  outline: none;
+}
+
+#seeker:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+#seeker::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #4CAF50;
+  cursor: ew-resize;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  #seeker {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #9a905d;
+    outline: none;
+  }
+  
+  #seeker::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #cd2026;
+    margin-top: -1px;
+  }
+  
+  #seeker::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0;
+    height: 10px;
+    cursor: ew-resize;
+    background: #434343;
+    box-shadow: -80px 0 0 80px #cd2026;
+  }
+}
+
+/** FF*/
+#seeker::-moz-range-progress {
+  background-color: #5cf121;
+}
+#seeker::-moz-range-track {  
+  background-color: #9a905d;
+}
+/* IE*/
+#seeker::-ms-fill-lower {
+  background-color: #5cf121;
+}
+#seeker::-ms-fill-upper {  
+  background-color: #9a905d;
+}
+/* SEEKER*/
+
+/* VOLUME BAR*/
+#volume {
+  outline: none;
+}
+
+#volume:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: ew-resize;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  #volume {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #9a905d;
+    outline: none;
+  }
+  
+  #volume::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #5cf121;
+    margin-top: -1px;
+  }
+  
+  #volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: #434343;
+    box-shadow: -80px 0 0 80px #5cf121;
+  }
+}
+
+/** FF*/
+#volume::-moz-range-progress {
+  background-color: #5cf121;
+}
+#volume::-moz-range-track {  
+  background-color: #9a905d;
+}
+/* IE*/
+#volume::-ms-fill-lower {
+  background-color: #5cf121;
+}
+#volume::-ms-fill-upper {  
+  background-color: #9a905d;
+}
+/* VOLUME */
