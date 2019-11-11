@@ -108,16 +108,7 @@ class AudioPlayer {
             const newValue = this.audio.currentTime * 1000 * 100 / this.audioDurationMs;
             this.seekerEl.value = newValue;
 
-            let currentMinutes = Math.floor(this.audio.currentTime / 60);
-            let currentSeconds = Math.floor(this.audio.currentTime % 60);
-
-            if (currentMinutes < 10) {
-                currentMinutes = "0" + String(currentMinutes);
-            }
-            if (currentSeconds < 10) {
-                currentSeconds = "0" + String(currentSeconds);
-            }
-            this.timeCurrentEl.innerText = currentMinutes + ":" + currentSeconds;
+            this.setCurrentTimeLabel();
         }
 
         this.audio.addEventListener("timeupdate", timeUpdateHandler);
@@ -135,16 +126,20 @@ class AudioPlayer {
             this.audio.currentTime = newValue;
             this.seekerEl.value = event.target.value;
         
-            let currentMinutes = Math.floor(this.audio.currentTime/60);
-            let currentSeconds = Math.floor(this.audio.currentTime%60);
-        
-            if (currentMinutes < 10) {
-                currentMinutes = "0" + currentMinutes;
-            }
-            if (currentSeconds < 10) {
-                currentSeconds = "0" + currentSeconds;
-            }
-            this.timeCurrentEl.innerText = currentMinutes + ":" + currentSeconds;
+            this.setCurrentTimeLabel();
         });
+    }
+
+    setCurrentTimeLabel() {
+        let currentMinutes = Math.floor(this.audio.currentTime/60);
+        let currentSeconds = Math.floor(this.audio.currentTime%60);
+    
+        if (currentMinutes < 10) {
+            currentMinutes = "0" + currentMinutes;
+        }
+        if (currentSeconds < 10) {
+            currentSeconds = "0" + currentSeconds;
+        }
+        this.timeCurrentEl.innerText = currentMinutes + ":" + currentSeconds;
     }
 }
