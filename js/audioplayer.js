@@ -92,24 +92,22 @@ class AudioPlayer {
             this.audio.volume = event.target.value / 1;
         });
 
+        this.audio.addEventListener("durationchange", event => {
+            //console.log("durationchange");
+            this.audioDurationMs = this.audio.duration * 1000;
+            this.setCurrentTimeLabel();
+            this.setEndTimeLabel();
+        });
+
         let canPlayThroughHandler = event => {
             //console.log("canplaythrough");
             this.audioDurationMs = this.audio.duration * 1000;
-            let durationMinutes = Math.floor(this.audio.duration / 60);
-            if (durationMinutes < 10) {
-                durationMinutes = "0" + durationMinutes;
-            }
-            let durationSeconds = Math.round(this.audio.duration % 60);
-            if (durationSeconds < 10) {
-                durationSeconds = "0" + durationSeconds;
-            }
-            this.timeEndEl.innerText = durationMinutes + ":" + durationSeconds;
+            this.setEndTimeLabel();
         }
 
         this.audio.addEventListener("canplaythrough", canPlayThroughHandler);
 
         let timeUpdateHandler = event => {
-            //console.log("event.timeStamp: " + event.timeStamp)
             const newValue = this.audio.currentTime * 1000 * 100 / this.audioDurationMs;
             this.seekerEl.value = newValue;
 
@@ -136,8 +134,8 @@ class AudioPlayer {
     }
 
     setCurrentTimeLabel() {
-        let currentMinutes = Math.floor(this.audio.currentTime/60);
-        let currentSeconds = Math.floor(this.audio.currentTime%60);
+        let currentMinutes = Math.floor(this.audio.currentTime / 60);
+        let currentSeconds = Math.floor(this.audio.currentTime % 60);
     
         if (currentMinutes < 10) {
             currentMinutes = "0" + currentMinutes;
@@ -146,5 +144,17 @@ class AudioPlayer {
             currentSeconds = "0" + currentSeconds;
         }
         this.timeCurrentEl.innerText = currentMinutes + ":" + currentSeconds;
+    }
+
+    setEndTimeLabel() {
+        let durationMinutes = Math.floor(this.audio.duration / 60);
+        if (durationMinutes < 10) {
+            durationMinutes = "0" + durationMinutes;
+        }
+        let durationSeconds = Math.floor(this.audio.duration % 60);
+        if (durationSeconds < 10) {
+            durationSeconds = "0" + durationSeconds;
+        }
+        this.timeEndEl.innerText = durationMinutes + ":" + durationSeconds;
     }
 }
